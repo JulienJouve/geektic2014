@@ -5,7 +5,6 @@ import java.util.*;
 import javax.persistence.*;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ninja_squad.geektic.beans.CentreInteret;
 import com.ninja_squad.geektic.beans.Geek;
@@ -23,11 +22,11 @@ public class GeekDAO {
         return query.getResultList();
     }
 	
-	public List<Geek> getGeeksBySex(String s)
+	public List<Geek> getGeeksBySex(String s, String i)
 	{	
-		TypedQuery<Geek> query = em.createQuery("SELECT g from Geek as g left join fetch g.centresInteret where g.sexe=:sexe", Geek.class);
+		TypedQuery<Geek> query = em.createQuery("SELECT distinct g from Geek as g left join fetch g.centresInteret inner join g.centresInteret as ci where g.sexe=:sexe and ci.interet=:interet", Geek.class);
         
-        return query.setParameter("sexe", s).getResultList();
+        return query.setParameter("sexe", s).setParameter("interet", i).getResultList();
 	}
 	
 	public List<CentreInteret> getAllInterets()

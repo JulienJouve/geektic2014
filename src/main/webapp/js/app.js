@@ -34,7 +34,7 @@ app.controller('GeekCtrl', function($scope, $http) {
 				alert("Vous devez sélectionner un genre et un centre d'interêt.");
 				return;
 			}
-    	$http.get('/api/geek/bysex/' + $scope.sexe + '/' + $scope.interet).success(function(geeks) {
+    	$http.get('/api/geek/bysex/' + $scope.sexe + '/' + $scope.interet.interet).success(function(geeks) {
             $scope.geeksbysex = geeks;
         });
     };    
