@@ -22,7 +22,7 @@ public class GeekDAO {
         return query.getResultList();
     }
 	
-	public List<Geek> getGeeksBySex(String s, String i)
+	public List<Geek> getGeeksByCriteria(String s, String i)
 	{	
 		TypedQuery<Geek> query = em.createQuery("SELECT distinct g from Geek as g left join fetch g.centresInteret inner join g.centresInteret as ci where g.sexe=:sexe and ci.interet=:interet", Geek.class);
         

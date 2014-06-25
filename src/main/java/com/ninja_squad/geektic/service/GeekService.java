@@ -32,7 +32,7 @@ public class GeekService {
 	
     @RequestMapping("/bysex/{sex}/{interet}")
     public List<Geek>afficherGeeksParSexe(@PathVariable("sex") String s, @PathVariable("interet") String i) {  
-        return gDAO.getGeeksBySex(s, i);
+        return gDAO.getGeeksByCriteria(s, i);
     }  
     
     @RequestMapping("/combo")
